@@ -18,14 +18,17 @@ def create_app(config_name=None):
     Returns:
         Flask: La aplicación Flask configurada y lista para usar.
     """
+    app = Flask(__name__)
     # TODO: Crear la app Flask
     
     # Aplicar configuración según entorno
     # FIXME: Debe usar el método para leer la configuración
-    config_obj = ""
+    config_obj = get_config
     app.config.from_object(config_obj)
     
     # Inicialización de extensiones
+    db.init_app(app)
+    api.Api(app)
     # TODO: las variables 'api' y 'db'
     
     # Registro de namespaces
