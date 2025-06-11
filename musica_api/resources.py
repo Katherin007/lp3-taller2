@@ -24,7 +24,8 @@ class Ping(Resource):
     def get(self):
         """Endpoint para verificar que la API está funcionando"""
         # TODO: pendiente de implementar
-        pass
+        return {"mensaje": "API de Música funcionando correctamente"}
+    
 
 # Recursos para Usuarios
 @ns.route("/usuarios")
@@ -35,7 +36,9 @@ class UsuarioListAPI(Resource):
     def get(self):
         """Obtiene todos los usuarios registrados"""
         # TODO: pendiente de implementar
-        pass
+        usuarios = Usuario.query.all()
+        return usuarios
+        
     
     @ns.doc("Crear un nuevo usuario")
     @ns.expect(usuario_base)
@@ -72,7 +75,9 @@ class UsuarioAPI(Resource):
     def get(self, id):
         """Obtiene un usuario por su ID"""
         # TODO: pendiente de implementar
-        pass
+        usuario = Usuario.query.get_or_404(id)
+        return usuario
+        
     
     @ns.doc("Actualizar un usuario")
     @ns.expect(usuario_base)
@@ -119,7 +124,9 @@ class CancionListAPI(Resource):
     def get(self):
         """Obtiene todas las canciones registradas"""
         # TODO: pendiente de implementar
-        pass
+        canciones = Cancion.query.all()
+        return canciones
+        
     
     @ns.doc("Crear una nueva canción")
     @ns.expect(cancion_base)
@@ -155,7 +162,9 @@ class CancionAPI(Resource):
     def get(self, id):
         """Obtiene una canción por su ID"""
         # TODO: pendiente de implementar
-        pass
+        cancion = Cancion.query.get_or_404(id)
+        return cancion
+        
     
     @ns.doc("Actualizar una canción")
     @ns.expect(cancion_base)
@@ -226,7 +235,9 @@ class FavoritoListAPI(Resource):
     def get(self):
         """Obtiene todos los registros de favoritos"""
         # TODO: pendiente de implementar
-        pass
+        favoritos = Favorito.query.all()
+        return favoritos
+        
     
     @ns.doc("Marcar una canción como favorita")
     @ns.expect(favorito_input)
