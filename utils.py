@@ -16,10 +16,11 @@ def validar_correo(correo):
         bool: True si el correo es válido, False en caso contrario
     """
     # TODO: crear la expresión regular para validar el correo
-    patron = ""
+    patron = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     return bool(re.match(patron, correo))
 
 def formatear_duracion(segundos):
+    
     """
     Convierte una duración en segundos a formato mm:ss.
     
@@ -29,6 +30,9 @@ def formatear_duracion(segundos):
     Returns:
         str: Duración formateada como mm:ss
     """
+    minutos = segundos // 60
+    segundos_restantes = segundos % 60
+    return f"{minutos:02}:{segundos_restantes:02}"
     # TODO: pendiente de implementar
     pass 
 
@@ -44,15 +48,21 @@ def generar_slug(texto):
         str: Slug generado
     """
     # TODO: Convertir a minúsculas
-    slug = texto
+    slug = texto.lower()
     
     # TODO: Reemplazar espacios con guiones
+    slug = re.sub(r'[^\w\s-]', '', slug)
+    
     
     # TODO: Eliminar caracteres no alfanuméricos (excepto guiones)
+    slug = re.sub(r'\s+', '-', slug)
+    
     
     # TODO: Reemplazar múltiples guiones con uno solo
+    slug = re.sub(r'-+', '-', slug)
     
     # TODO: Eliminar guiones al inicio y final
+    slug = slug.strip('-')
     
     return slug
 
@@ -63,6 +73,7 @@ def obtener_año_actual():
     Returns:
         int: Año actual
     """
+    return datetime.now().year
     # TODO: pendiente por implementar
     return ""
 
