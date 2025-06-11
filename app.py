@@ -4,9 +4,7 @@ Script principal para ejecutar la aplicación Flask.
 import os
 from musica_api import create_app
 from dotenv import load_dotenv
-from flask import Flask
-from flask_restful import Api
-from musica_api.config import get_config
+
 
 # TODO: Cargar variables de entorno desde archivo .env si existe
 

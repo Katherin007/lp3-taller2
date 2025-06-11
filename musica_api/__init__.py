@@ -2,6 +2,7 @@
 Módulo principal de inicialización de la aplicación Flask.
 Configura la aplicación, las extensiones y registra los namespaces.
 """
+from os
 from flask import Flask
 from .extensions import api, db
 from .resources import ns
